@@ -1,0 +1,36 @@
+body {
+  width: 20rem;
+  background-color: black;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin: 1rem 0;
+}
+
+li {
+  padding: 0.25rem;
+  border-bottom: 1px white solid;
+  margin-block-end: 0.45em;
+}
+
+h3,
+p {
+  margin: 0;
+}
+
+button{
+  border-radius: 0.5em;
+}
+
+button:hover{
+  opacity: 0.8;
+  cursor: pointer;
+
+}
+
+a{
+  cursor: pointer;
+}
