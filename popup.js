@@ -2,10 +2,9 @@ const tabs = await chrome.tabs.query({
   url: [
     "https://developer.chrome.com/docs/webstore/*",
     "https://developer.chrome.com/docs/extensions/*",
-    "https://developer.mozilla.org/en-US/docs/"
+    "https://developer.mozilla.org/en-US/docs/*",
   ]
 });
-
 
 const collator = new Intl.Collator();
 tabs.sort((a, b) => collator.compare(a.title, b.title));
@@ -61,6 +60,5 @@ ungroupBtn.addEventListener("click", async ()=>{
 });
 
 
-document.querySelector("ul").append(...elements);
-
+  document.querySelector("ul").append(...elements);
 
