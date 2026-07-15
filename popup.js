@@ -1,19 +1,33 @@
+const allTabs = await chrome.tabs.query({});
+const docsTab = []
+
+
+function fetchDocs()  {allTabs.map((tab) =>{
+  if(tab.url.includes("doc" || "docs" )){
+    docsTab.push(tab.url)
+  }
+})
+}
+
+await fetchDocs()
+
+
+
 const tabs = await chrome.tabs.query({
-  url: [
-    "https://developer.chrome.com/docs/webstore/*",
-    "https://developer.chrome.com/docs/extensions/*",
-    "https://developer.mozilla.org/en-US/docs/*",
+  url: [...docsTab
   ]
 });
+
+
 
 const collator = new Intl.Collator();
 tabs.sort((a, b) => collator.compare(a.title, b.title));
 
 const template = document.getElementById("li_template");
 const elements = new Set();
+
 for (const tab of tabs) {
   const element = template.content.firstElementChild.cloneNode(true);
-
   const title = tab.title.split("-")[0].trim();
   const pathname = new URL(tab.url).pathname.slice("/docs".length);
 
@@ -28,6 +42,14 @@ for (const tab of tabs) {
   elements.add(element);
 }
 
+async function getTab(){
+  let queryOptions = {active: true || false, };
+  let [tab] = await chrome.tabs.query(queryOptions);
+
+  return tab
+}
+
+getTab()
 let tabIds = []
 let group;
 
