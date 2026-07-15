@@ -4,6 +4,7 @@ const docsTab = []
 
 function fetchDocs()  {allTabs.map((tab) =>{
   if(tab.url.includes("doc" || "docs" )){
+    
     docsTab.push(tab.url)
   }
 })
